@@ -20,10 +20,10 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            {{ __('Alec Thompson') }}
+                            {{ __('Alec Bhizzer')   }}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
-                            {{ __(' CEO / Co-Founder') }}
+                            {{ __(' CEO Sistem') }}
                         </p>
                     </div>
                 </div>
@@ -31,8 +31,7 @@
                     <div class="nav-wrapper position-relative end-0">
                         <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="javascript:;"
-                                    role="tab" aria-controls="overview" aria-selected="true">
+                                <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="{{ route('user-profile') }}" role="tab" aria-controls="overview" aria-selected="true">
                                     <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none"
@@ -100,7 +99,7 @@
     <div class="container-fluid py-4">
         <div class="card">
             <div class="card-header pb-0 px-3">
-                <h6 class="mb-0">{{ __('Profile Information') }}</h6>
+                <h6 class="mb-0">{{ __('Input Data Pasien') }}</h6>
             </div>
             <div class="card-body pt-4 p-3">
                 <form action="/user-profile" method="POST" role="form text-left">
@@ -126,7 +125,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user-name" class="form-control-label">{{ __('Full Name') }}</label>
+                                <label for="user-name" class="form-control-label">{{ __('Name Lengkap') }}</label>
                                 <div class="@error('user.name')border border-danger rounded-3 @enderror">
                                     <input class="form-control" value="{{ auth()->user()->name }}" type="text" placeholder="Name" id="user-name" name="name">
                                         @error('name')
@@ -134,13 +133,24 @@
                                         @enderror
                                 </div>
                             </div>
+                            @if(session('warning'))
+                              <div class="alert alert-warning">
+                                  {{ session('warning') }}
+                              </div>
+                            @endif
+
+                            @if(session('success'))
+                              <div class="alert alert-success">
+                                  {{ session('success') }}
+                              </div>
+                            @endif
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user-email" class="form-control-label">{{ __('Email') }}</label>
+                                <label for="user-nomor" class="form-control-label">{{ __('Nomor Kartu BPJS') }}</label>
                                 <div class="@error('email')border border-danger rounded-3 @enderror">
-                                    <input class="form-control" value="{{ auth()->user()->email }}" type="email" placeholder="@example.com" id="user-email" name="email">
-                                        @error('email')
+                                <input class="form-control" type="tel" placeholder="40770888444" id="number" name="phone" value="{{ auth()->user()->phone }}">                                        @error('email')
+
                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                         @enderror
                                 </div>
@@ -150,7 +160,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user.phone" class="form-control-label">{{ __('Phone') }}</label>
+                                <label for="user.phone" class="form-control-label">{{ __('No Telpon') }}</label>
                                 <div class="@error('user.phone')border border-danger rounded-3 @enderror">
                                     <input class="form-control" type="tel" placeholder="40770888444" id="number" name="phone" value="{{ auth()->user()->phone }}">
                                         @error('phone')
@@ -161,18 +171,23 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user.location" class="form-control-label">{{ __('Location') }}</label>
-                                <div class="@error('user.location') border border-danger rounded-3 @enderror">
-                                    <input class="form-control" type="text" placeholder="Location" id="name" name="location" value="{{ auth()->user()->location }}">
+                                <label for="user-nomor" class="form-control-label">{{ __('Jumlah Klaim') }}</label>
+                                <div class="@error('user.phone')border border-danger rounded-3 @enderror">
+                                    <input class="form-control" type="tel" placeholder="40770888444" id="number" name="phone" value="{{ auth()->user()->phone }}">                                        @error('email')
+                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                        @enderror
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="about">{{ 'About Me' }}</label>
-                        <div class="@error('user.about')border border-danger rounded-3 @enderror">
-                            <textarea class="form-control" id="about" rows="3" placeholder="Say something about yourself" name="about_me">{{ auth()->user()->about_me }}</textarea>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="user.location" class="form-control-label">{{ __('Alamat') }}</label>
+                                <div class="@error('user.location') border border-danger rounded-3 @enderror">
+                                    <input class="form-control" type="text" placeholder="Alamat" id="name" name="Alamat" value="{{ auth()->user()->location }}">
+                                </div>
+                            </div>
                         </div>
+                        <div class="row">
                     </div>
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4">{{ 'Save Changes' }}</button>
