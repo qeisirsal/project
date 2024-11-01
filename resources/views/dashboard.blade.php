@@ -7,51 +7,28 @@
     <div class="col-12">
       <div class="card mb-4">
         <div class="card-header pb-0">
-          <h6>Dashboard Menu</h6>
+          <h6>Menu Verifikasi BPJS</h6>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
-          <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
-              <thead>
-                <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Menu Item</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">User Profile</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="text-xs font-weight-bold mb-0">Manage your profile information</p>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <a href="{{ route('user-profile') }}" class="btn btn-sm btn-primary">View</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">User Management</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="text-xs font-weight-bold mb-0">Manage system users</p>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <a href="{{ route('user-management') }}" class="btn btn-sm btn-primary">View</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="row g-3 p-3">
+            <div class="col-md-6">
+              <a href="{{ route('user-profile') }}" class="text-decoration-none">
+                <div class="card bg-primary text-white h-100 clickable-card">
+                  <div class="card-body d-flex align-items-center justify-content-center">
+                    <h5 class="mb-0">Klaim</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-6">
+              <a href="{{ route('user-management') }}" class="text-decoration-none">
+                <div class="card bg-primary text-white h-100">
+                  <div class="card-body d-flex align-items-center justify-content-center">
+                    <h5 class="mb-0">Penanganan Pasien</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>

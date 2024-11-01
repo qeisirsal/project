@@ -8,6 +8,7 @@ class UserProfileController extends Controller
 {
     public function index()
     {
-        return view('laravel-examples.user-profile');
+        return view('Laravel-Examples.User-Profile');
     }
 }
+

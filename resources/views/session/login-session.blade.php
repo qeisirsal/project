@@ -6,9 +6,9 @@
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <div class="card">
+          <div class="card shadow-lg">
             <div class="card-header bg-transparent text-center">
-              <h3 class="font-weight-bolder">Welcome back</h3>
+              <h3 class="font-weight-bolder">Selamat Datang </h3>
             </div>
             <div class="card-body">
               <form role="form" method="POST" action="/session">
@@ -32,15 +32,9 @@
                   <label class="form-check-label" for="rememberMe">Remember me</label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                  <button type="submit" class="btn btn-primary w-100">Login</button>
                 </div>
               </form>
-            </div>
-            <div class="card-footer text-center">
-              <small><a href="/login/forgot-password">Forgot your password?</a></small>
-              <p class="mt-3 mb-0">
-                Don't have an account? <a href="register">Sign up</a>
-              </p>
             </div>
           </div>
         </div>

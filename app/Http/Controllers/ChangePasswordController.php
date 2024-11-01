@@ -14,7 +14,6 @@ class ChangePasswordController extends Controller
 {
     public function changePassword(Request $request)
     {
-        
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
@@ -34,8 +33,17 @@ class ChangePasswordController extends Controller
             }
         );
     
-        return $status === Password::PASSWORD_RESET
-                    ? redirect('/login')->with('success', __($status))
-                    : back()->withErrors(['email' => [__($status)]]);
+        // Ubah respons menjadi JSON
+        if ($status === Password::PASSWORD_RESET) {
+            return response()->json([
+                'status' => 'success',
+                'message' => __($status)
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => __($status)
+            ], 400);
+        }
     }
 }
