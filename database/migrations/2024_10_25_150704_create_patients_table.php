@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id(); // Kolom ID untuk primary key
-            $table->string('no_rm'); // Kolom untuk nomor rekam medis
+            $table->unsignedBigInteger('no_rm')->unique(); // Kolom untuk nomor rekam medis dengan UNIQUE constraint dan tipe data UNSIGNED BIGINT
             $table->decimal('biaya_pendaftaran_administrasi', 12, 2); // Biaya Pendaftaran & Administrasi
             $table->decimal('biaya_akomodasi_rawat_inap', 12, 2); // Biaya Akomodasi Rawat Inap
             $table->decimal('biaya_pemeriksaan_konsultasi', 12, 2); // Biaya Pemeriksaan & Konsultasi

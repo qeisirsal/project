@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ClaimController;
+use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,3 +79,33 @@ Route::get('/claims', [ClaimController::class, 'index'])->name('claims.index');
 
 //new
 Route::resource('claims', ClaimController::class);
+
+Route::get('/api/patients/search/{no_rm}', [PatientController::class, 'search']);
+Route::post('/api/patients/check-limit', [PatientController::class, 'checkLimit'])->name('patients.check-limit');
+
+// Route untuk menampilkan halaman
+Route::get('/user-management', [PatientController::class, 'index'])->name('user-management');
+
+// Route untuk API cek limit
+Route::post('/api/patients/check-limit', [PatientController::class, 'checkLimit']);
+
+Route::post('/patients/check-limit', [PatientController::class, 'checkLimit'])->name('patients.check-limit');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/get-patient-name/{no_rm}', function($no_rm) {
+    $patient = DB::table('claims')
+        ->where('no_rm', $no_rm)
+        ->select('nama_lengkap')
+        ->first();
+    
+    return response()->json([
+        'nama_lengkap' => $patient ? $patient->nama_lengkap : null
+    ]);
+});
+
+Route::get('/patient-detail/{no_rm}', [DashboardController::class, 'getPatientDetail']);
+
+Route::post('/hitung-klaim', [ClaimController::class, 'hitungKlaim'])->name('hitung.klaim');
+
+

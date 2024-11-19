@@ -12,29 +12,29 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('claims', function (Blueprint $table) {
-            $table->id(); // Kolom ID untuk primary key
-            $table->unsignedBigInteger('patient_id'); // Foreign key untuk pasien
-            $table->string('nama_lengkap'); // Nama lengkap pasien
-            $table->string('no_rm'); // Nomor Rekam Medis
-            $table->string('no_bpjs'); // Nomor BPJS
-            $table->string('no_sep'); // Nomor SEP
-            $table->string('kelas_pasien'); // Kelas pasien
-            $table->date('tanggal'); // Tanggal klaim
-            $table->text('alamat'); // Alamat pasien
-            $table->decimal('klaim', 12, 2); // Jumlah klaim
-            $table->string('diagnosa'); // Diagnosa pasien
-            $table->timestamps(); // Kolom untuk created_at dan updated_at
-
-            // Definisi foreign key
-            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->bigIncrements('id'); // This line is attempting to add the 'id' column
+            $table->unsignedBigInteger('no_rm');
+            $table->string('nama_lengkap');
+            $table->string('no_bpjs');
+            $table->string('no_sep');
+            $table->string('kelas_pasien');
+            $table->date('tanggal');
+            $table->text('alamat');
+            $table->decimal('klaim', 12, 2)->default(0);
+            $table->string('diagnosa');
+            $table->timestamps();
         });
+        
     }
+    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('claims'); // Menghapus tabel jika rollback
+        Schema::table('claims', function (Blueprint $table) {
+            $table->decimal('klaim', 12, 2)->default(NULL)->change();  // Revert default value if rolling back
+        });
     }
-};
+    };

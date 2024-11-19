@@ -106,7 +106,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group">    
                                 <label for="alamat">Alamat</label>
                                 <textarea class="form-control" name="alamat" rows="3" required></textarea>
                             </div>
@@ -164,9 +164,10 @@
                         </div> -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="harga-diagnosa">Harga Diagnosa</label>
-                                <p id="harga-diagnosa">Harga: Rp 0</p>
-                                <p id="total-harga">Total: Rp 0</p> <!-- Tambahkan total harga -->
+                                <label for="total-klaim">Total Klaim</label>
+                                <!-- <p id="harga-diagnosa">Harga: Rp 0</p> -->
+                                <p id="total-klaim">Total: Rp <span id="total-harga">0</span></p>
+                                <input type="hidden" name="total_klaim" id="total_klaim_input">
                             </div>
                         </div>
                     </div>
@@ -179,55 +180,62 @@
 
                     <!-- Inisialisasi Select2 -->
                     <script>
-                        $(document).ready(function() {
-                            $('#diagnosa-select').select2({
-                                placeholder: '-- Pilih Diagnosa --',
-                                width: '100%'
-                            });
+    $(document).ready(function() {
+        $('#diagnosa-select').select2({
+            placeholder: '-- Pilih Diagnosa --',
+            width: '100%'
+        });
 
-                            // Harga berdasarkan kelas pasien
-                            const hargaKelas = {
-                                1: 100000, // Kelas 1
-                                2: 80000,  // Kelas 2
-                                3: 60000,  // Kelas 3
-                                4: 40000   // Kelas 4
-                            };
+        const hargaKelas = {
+            1: 100000, // Kelas 1
+            2: 80000,  // Kelas 2
+            3: 60000,  // Kelas 3
+            4: 40000   // Kelas 4
+        };
 
-                            // Harga berdasarkan diagnosa
-                            const hargaDiagnosa = {
-                                meningitis: 500000,
-                                extrapyramidal: 300000,
-                                epilepsy: 250000,
-                                status_epilepticus: 400000,
-                                tth: 150000,
-                                // Tambahkan harga untuk diagnosa lainnya
-                            };
+        const hargaDiagnosa = {
+            meningitis: 500000,
+            extrapyramidal: 300000,
+            epilepsy: 250000,
+            status_epilepticus: 400000,
+            tth: 150000,
+            // Tambahkan harga untuk diagnosa lainnya
+        };
 
-                            // Update harga ketika kelas pasien dipilih
-                            $('#kelas_pasien').change(function() {
-                                const kelas = $(this).val();
-                                const hargaKelasPasien = hargaKelas[kelas] || 0;
-                                const diagnosa = $('#diagnosa-select').val();
-                                const hargaDiagnosaPilihan = hargaDiagnosa[diagnosa] || 0;
-                                const total = hargaKelasPasien + hargaDiagnosaPilihan;
+        function updateHarga() {
+            const kelas = $('#kelas_pasien').val();
+            const hargaKelasPasien = hargaKelas[kelas] || 0;
+            const diagnosa = $('#diagnosa-select').val();
+            const hargaDiagnosaPilihan = hargaDiagnosa[diagnosa] || 0;
+            const total = hargaKelasPasien + hargaDiagnosaPilihan;
 
-                                $('#harga-diagnosa').text('Harga: Rp ' + hargaDiagnosaPilihan);
-                                $('#total-harga').text('Total: Rp ' + total);
-                            });
+            $('#harga-diagnosa').text('Harga: Rp ' + hargaDiagnosaPilihan);
+            $('#total-harga').text(total);
+            $('#total_klaim_input').val(total);
 
-                            // Update total harga ketika diagnosa dipilih
-                            $('#diagnosa-select').change(function() {
-                                const kelas = $('#kelas_pasien').val();
-                                const hargaKelasPasien = hargaKelas[kelas] || 0;
-                                const diagnosa = $(this).val();
-                                const hargaDiagnosaPilihan = hargaDiagnosa[diagnosa] || 0;
-                                const total = hargaKelasPasien + hargaDiagnosaPilihan;
+            // Kirim data ke server
+            $.ajax({
+                url: '/path/to/your/api/claim', // Ganti dengan endpoint yang sesuai
+                method: 'POST',
+                data: {
+                    kelas: kelas,
+                    diagnosa: diagnosa,
+                    harga_diagnosa: hargaDiagnosaPilihan,
+                    total_harga: total
+                },
+                success: function(response) {
+                    console.log('Data berhasil dikirim:', response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Terjadi kesalahan:', error);
+                }
+            });
+        }
 
-                                $('#harga-diagnosa').text('Harga: Rp ' + hargaDiagnosaPilihan);
-                                $('#total-harga').text('Total: Rp ' + total);
-                            });
-                        });
-                    </script>
+        $('#kelas_pasien').change(updateHarga);
+        $('#diagnosa-select').change(updateHarga);
+    });
+</script>
 
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn bg-gradient-primary btn-md mt-4 mb-4">Simpan Data</button>
