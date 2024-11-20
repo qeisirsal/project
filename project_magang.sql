@@ -39,20 +39,21 @@ CREATE TABLE `claims` (
   `diagnosa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `total_klaim` decimal(10,2) DEFAULT NULL
+  `total_klaim` decimal(10,2) DEFAULT NULL,
+  `keterangan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `claims`
 --
 
-INSERT INTO `claims` (`id`, `no_rm`, `nama_lengkap`, `no_bpjs`, `no_sep`, `kelas_pasien`, `tanggal`, `alamat`, `diagnosa`, `created_at`, `updated_at`, `total_klaim`) VALUES
-(2, 98767, 'Qeis Irsal Zi\'ul Haq', '3333333333333', '00995', '2', '2024-11-13', 'porjo', 'extrapyramidal', '2024-11-10 07:18:25', '2024-11-10 07:18:25', NULL),
-(3, 98767, 'Qeis Irsal Zi\'ul Haq', '3333333333333', '00995', '3', '2024-11-21', 'porjo', 'status_epilepticus', '2024-11-10 07:29:39', '2024-11-10 07:29:39', NULL),
-(4, 91378, 'Qeis Irsal Zi\'ul Haq (Mahasiswa)', '3433582489174', '36645', '1', '2024-11-22', 'vyufiiu', 'tth', '2024-11-10 08:10:53', '2024-11-10 08:10:53', NULL),
-(5, 82647, 'iyain aja', '1676838671286', '89123', '1', '2024-11-28', 'yk', 'cerebral_edema', '2024-11-10 08:14:57', '2024-11-10 08:14:57', NULL),
-(6, 67255, 'puputtttt', '1612136711335', '81272', '3', '2024-11-30', 'sleman', 'status_epilepticus', '2024-11-10 08:22:11', '2024-11-10 08:22:11', NULL),
-(7, 12345, 'ILHAM WAHYUNINGTYAS', '3333333333333', '00995', '3', '2024-03-12', 'porjo', 'status_epilepticus', '2024-11-16 18:14:41', '2024-11-16 18:14:41', '460000.00');
+INSERT INTO `claims` (`id`, `no_rm`, `nama_lengkap`, `no_bpjs`, `no_sep`, `kelas_pasien`, `tanggal`, `alamat`, `diagnosa`, `created_at`, `updated_at`, `total_klaim`, `keterangan`) VALUES
+(2, 98767, 'Qeis Irsal Zi\'ul Haq', '3333333333333', '00995', '2', '2024-11-13', 'porjo', 'extrapyramidal', '2024-11-10 07:18:25', '2024-11-10 07:18:25', NULL, NULL),
+(3, 98767, 'Qeis Irsal Zi\'ul Haq', '3333333333333', '00995', '3', '2024-11-21', 'porjo', 'status_epilepticus', '2024-11-10 07:29:39', '2024-11-10 07:29:39', NULL, NULL),
+(4, 91378, 'Qeis Irsal Zi\'ul Haq (Mahasiswa)', '3433582489174', '36645', '1', '2024-11-22', 'vyufiiu', 'tth', '2024-11-10 08:10:53', '2024-11-10 08:10:53', NULL, NULL),
+(5, 82647, 'iyain aja', '1676838671286', '89123', '1', '2024-11-28', 'yk', 'cerebral_edema', '2024-11-10 08:14:57', '2024-11-10 08:14:57', NULL, NULL),
+(6, 67255, 'puputtttt', '1612136711335', '81272', '3', '2024-11-30', 'sleman', 'status_epilepticus', '2024-11-10 08:22:11', '2024-11-10 08:22:11', NULL, NULL),
+(7, 12345, 'ILHAM WAHYUNINGTYAS', '3333333333333', '00995', '3', '2024-03-12', 'porjo', 'status_epilepticus', '2024-11-16 18:14:41', '2024-11-16 18:14:41', '460000.00', NULL);
 
 -- --------------------------------------------------------
 

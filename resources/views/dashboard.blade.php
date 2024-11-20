@@ -123,6 +123,7 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Klaim</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Estimasi</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -157,10 +158,20 @@
                                             <span class="badge badge-sm bg-gradient-success">Dalam Batas</span>
                                         @endif
                                     </td>
+                                    <td>
+                                        <form method="POST" action="{{ route('update.komentar', $data->no_rm) }}" class="d-inline">
+                                            @csrf
+                                            @method('PATCH')
+                                            <input type="text" name="komentar" class="form-control form-control-sm" 
+                                                   value="{{ old('komentar', $data->komentar) }}" 
+                                                   placeholder="Masukkan komentar" 
+                                                   onblur="this.form.submit()">
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center">Tidak ada data perbandingan</td>
+                                    <td colspan="8" class="text-center">Tidak ada data perbandingan</td>
                                 </tr>
                             @endforelse
                         </tbody>

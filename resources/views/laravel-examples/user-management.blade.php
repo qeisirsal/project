@@ -47,6 +47,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nama Pasien</label>
+                                    <input type="text" class="form-control" id="nama_pasien" readonly>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -118,6 +124,29 @@ $(document).ready(function() {
         placeholder: 'Cari No RM...',
         allowClear: true,
         width: '100%'
+    });
+
+    // Event handler untuk perubahan no_rm
+    $('#no_rm').on('change', function() {
+        const no_rm = $(this).val();
+        if (no_rm) {
+            $.ajax({
+                url: `/get-patient-name/${no_rm}`,
+                method: 'GET',
+                success: function(response) {
+                    if (response.nama_lengkap) {
+                        $('#nama_pasien').val(response.nama_lengkap);
+                    } else {
+                        $('#nama_pasien').val('Nama tidak ditemukan');
+                    }
+                },
+                error: function() {
+                    $('#nama_pasien').val('Error mengambil data');
+                }
+            });
+        } else {
+            $('#nama_pasien').val('');
+        }
     });
 
     // Event handler untuk button Cek Biaya
