@@ -39,11 +39,17 @@ class ClaimController extends Controller
             'tanggal' => 'required|date',
             'alamat' => 'required|string|max:255',
             'diagnosa' => 'required|string|max:255',
-            'total_klaim' => 'required|string|max:225'
+            'keterangan' => 'nullable|string|max:255', // Ubah menjadi nullable
+            'total_klaim' => 'required|numeric|min:0' // Ubah validasi total_klaim
         ]);
 
-        // Simpan data ke database
-        Claim::create($request->all());
+        // Simpan data ke database termasuk keterangan
+        $data = $request->all();
+        if (!isset($data['keterangan'])) {
+            $data['keterangan'] = null; // Set default null jika tidak ada keterangan
+        }
+        
+        Claim::create($data);
 
         // Redirect atau return response
         return redirect()->back()->with('success', 'Data berhasil disimpan!');
@@ -70,12 +76,18 @@ class ClaimController extends Controller
             'kelas_pasien' => 'required|integer',
             'tanggal' => 'required|date',
             'alamat' => 'required|string|max:255',
-            'klaim' => 'required|numeric|min:0',
+            'total_klaim' => 'required|numeric|min:0',
+            'keterangan' => 'nullable|string|max:255', // Ubah menjadi nullable
             'diagnosa' => 'required|string|max:255',
         ]);
 
-        // Memperbarui klaim dengan data yang valid
-        $claim->update($request->all());
+        // Memperbarui klaim dengan data yang valid termasuk keterangan
+        $data = $request->all();
+        if (!isset($data['keterangan'])) {
+            $data['keterangan'] = null; // Set default null jika tidak ada keterangan
+        }
+
+        $claim->update($data);
 
         return redirect()->route('claims.index')->with('success', 'Klaim berhasil diperbarui.');
     }

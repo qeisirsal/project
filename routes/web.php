@@ -109,5 +109,3 @@ Route::get('/patient-detail/{no_rm}', [DashboardController::class, 'getPatientDe
 Route::post('/hitung-klaim', [ClaimController::class, 'hitungKlaim'])->name('hitung.klaim');
 
 Route::patch('/update-komentar/{no_rm}', [DashboardController::class, 'updateKomentar'])->name('update.komentar');
-
-
