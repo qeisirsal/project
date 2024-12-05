@@ -6,7 +6,6 @@ use App\Models\Claim;
 use App\Models\Patient;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -39,7 +38,7 @@ class DashboardController extends Controller
             $patient->update([
                 'keterangan' => $request->updateketerangan
             ]);
-            return redirect()->back()->with('success', 'Keterangan berhasil diperbarui')->withInput();
+            return redirect()->back()->with('success', 'keterangan berhasil diperbarui')->withInput();
         }
 
         return redirect()->back()->with('error', 'Data tidak ditemukan')->withInput();

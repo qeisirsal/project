@@ -7,7 +7,7 @@
     <div class="col-12">
       <div class="card mb-4">
         <div class="card-header pb-0">
-          <h6>Menu Verifikasi BPJS</h6>
+          <h6>Menu Verifikasi BPJS</h 6>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
           <div class="row g-3 p-3">
@@ -39,7 +39,19 @@
     <div class="col-12">
       <div class="card mb-4">
         <div class="card-header pb-0">
-
+         
+         
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                 
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -124,12 +136,12 @@
 </div>
 
 <style>
-  .bg-light-danger {
+.bg-light-danger {
     background-color: rgba(253, 227, 227, 0.5);
-  }
-  .bg-light-success {
+}
+.bg-light-success {
     background-color: rgba(227, 253, 235, 0.5);
-  }
+}
 </style>
 
 @endsection
