@@ -27,10 +27,14 @@ use Illuminate\Support\Facades\DB;
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/', [HomeController::class, 'home']);
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 	Route::get('dashboard', function () {
 		return view('dashboard');
 	})->name('dashboard');
+
+	Route::get('ppk', function () {
+		return view('ppk');
+	})->name('ppk');
 
 	Route::get('profile', function () {
 		return view('profile');
@@ -44,9 +48,15 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('laravel-examples/user-management');
 	})->name('user-management');
 
+	Route::get('user-ppk', function () {
+		return view('laravel-examples/user-ppk');
+	})->name('user-ppk');
+
     Route::get('/logout', [SessionsController::class, 'destroy']);
+	Route::get('/user-ppk', [UserProfileController::class, 'index'])->name('user-ppk');
 	Route::get('/user-profile', [UserProfileController::class, 'index'])->name('user-profile');
-	Route::post('/user-profile', [InfoUserController::class, 'store']);
+	Route::post('/user-ppk', [UserProfileController::class, 'store']);
+	Route::post('/user-profile', [UserProfileController::class, 'store']);
     Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
@@ -108,6 +118,4 @@ Route::get('/patient-detail/{no_rm}', [DashboardController::class, 'getPatientDe
 
 Route::post('/hitung-klaim', [ClaimController::class, 'hitungKlaim'])->name('hitung.klaim');
 
-Route::patch('/update-komentar/{no_rm}', [DashboardController::class, 'updateKomentar'])->name('update.komentar');
-
-
+Route::patch('/update-komentar/{no_rm}', [DashboardController::class, 'updatekomentar'])->name('update.komentar');

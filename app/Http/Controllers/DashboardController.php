@@ -19,7 +19,7 @@ class DashboardController extends Controller
                 'c.no_bpjs',
                 'c.alamat',
                 'c.total_klaim',
-                'p.komentar',
+                'c.keterangan',
                 'p.total_estimasi',
                 DB::raw('CASE WHEN COALESCE(p.total_estimasi, 0) > c.total_klaim THEN 1 ELSE 0 END as is_exceeded')
             )
@@ -27,18 +27,18 @@ class DashboardController extends Controller
             ->orderBy('c.created_at', 'desc')
             ->get();
 
-        return view('dashboard', compact('perbandinganData'));
+        return view('dashboard', ['perbandinganData' => $perbandinganData]);
     }
 
-    public function updateKomentar(Request $request, $no_rm)
+    public function updateketerangan(Request $request, $no_rm)
     {
         $patient = Patient::where('no_rm', $no_rm)->first();
 
         if ($patient) {
             $patient->update([
-                'komentar' => $request->komentar
+                'keterangan' => $request->updateketerangan
             ]);
-            return redirect()->back()->with('success', 'Komentar berhasil diperbarui')->withInput();
+            return redirect()->back()->with('success', 'keterangan berhasil diperbarui')->withInput();
         }
 
         return redirect()->back()->with('error', 'Data tidak ditemukan')->withInput();

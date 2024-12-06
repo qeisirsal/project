@@ -85,9 +85,9 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                        <div class="form-group">
                                 <label for="kelas_pasien">Kelas Pasien</label>
-                                <select id="kelas_pasien" class="form-control" name="kelas_pasien" required>
+                                <select id="kelas_pasien_select" class="form-control" name="kelas_pasien" required>
                                     <option value="">-- Pilih Kelas Pasien --</option>
                                     <option value="1">Kelas 1</option>
                                     <option value="2">Kelas 2</option>
@@ -116,44 +116,181 @@
                                 <label for="diagnosa">Diagnosa</label>
                                 <select id="diagnosa-select" class="form-control" name="diagnosa" required>
                                     <option value="">-- Pilih Diagnosa --</option>
-                                    <option value="meningitis">MENINGITIS TANPA DIKETAHUI PENYEBABNYA</option>
-                                    <option value="extrapyramidal">EXTRAPYRAMIDAL</option>
-                                    <option value="epilepsy">EPILEPSY</option>
-                                    <option value="status_epilepticus">STATUS EPILEPTICUS</option>
-                                    <option value="tth">TTH</option>
-                                    <option value="polyneuropathy">POLYNEUROPATI</option>
-                                    <option value="cerebral_palsy">CEREBRAL PALSY (CP)</option>
-                                    <option value="tetraplegia">TETRAPLEGIA</option>
-                                    <option value="hydrocephalus">HYDROCEPHALUS</option>
-                                    <option value="encephalopathy">ENCEPHALOPATHY</option>
-                                    <option value="cerebral_edema">CEREBRAL DEDEMA</option>
-                                    <option value="konjungtivitis">KONJUNGTIVITIS AKUT</option>
-                                    <option value="vertigo">VERTIGO OF CENTRAL ORIGIN</option>
-                                    <option value="tinnitus">TINNITUS</option>
-                                    <option value="heart_disease">HEART DISEASE</option>
-                                    <option value="perdarahan_intracerebral">PERDARAHAN INTRACEREBRAL</option>
-                                    <option value="post_stroke">POST STROKE</option>
-                                    <option value="aneurysm">ANEURYSM</option>
-                                    <option value="peripheral_vascular">PERIPHERAL VASCULAR DISEASE</option>
-                                    <option value="dvt">DEEP VEIN THROMBOSIS</option>
-                                    <option value="pharyngitis">PHARYNGITIS AKUT</option>
-                                    <option value="bronchopneumonia">BRONCHOPNEUMONIA</option>
-                                    <option value="pneumonia">PNEUMONIA</option>
-                                    <option value="bronkitis">BRONKITIS AKUT</option>
-                                    <option value="exacerbasi_ppok">EXACERBASI PPOK</option>
-                                    <option value="asma_bronchial">ASMA BRONCHIAL</option>
-                                    <option value="bronchiectasis">BRONCHIECTASIS</option>
-                                    <option value="pyothorax">PYOTHORAX</option>
-                                    <option value="efusi_pleura">EFUSI PLEURA</option>
-                                    <option value="gingivitis">GINGIVITIS AKUT</option>
-                                    <option value="sialoadenitis">SIALOADENITIS</option>
-                                    <option value="stomatitis">STOMATITIS</option>
-                                    <option value="gerd">GERD</option>
-                                    <option value="ulcer_gastric">ULCER GASTRIC AKUT DENGAN PERDARAHAN</option>
+                                    <option value="serviks">Serviks</option>
+                                    <option value="DiabetesMelitus">Diabetes Melitus</option>
+                                    <option value="HIV">HIV</option>
+                                    <option value="Hipertensi">Hipertensi</option>
+                                    <option value="TBParu">TB Paru</option>
                                 </select>
                             </div>
+                            <!-- Div untuk Serviks -->
+                            <div id="infoServiks" class="mt-4 animate_animated animate_fadeIn" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; width: 80%; max-width: 600px;">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h5 class="mb-3"><i class="fas fa-notes-medical me-2"></i>Anamnesis</h5>
+                                        <ul class="mb-4">
+                                            <li>Perdarahan pervagina abnormal</li>
+                                            <li>Perdarahan post koital</li>
+                                            <li>Perdarahan pasca menopause</li>
+                                        </ul>
+
+                                        <h5 class="mb-3"><i class="fas fa-microscope me-2"></i>Penunjang</h5>
+                                        <ul class="mb-4">
+                                            <li>Foto rontgen paru-paru</li>
+                                            <li>Pemeriksaan hispatologi jaringan serviks bila perlu dilakukan dilatasi kuretase</li>
+                                        </ul>
+
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-danger me-3" onclick="showWarning('serviks')">Belum Sesuai</button>
+                                            <button type="button" class="btn btn-success" onclick="closeInfoServiks()">Sudah Sesuai</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function closeInfoServiks() {
+                                    document.getElementById('infoServiks').style.display = 'none';
+                                }
+                                
+                                function showWarning(diagnosa) {
+                                    Swal.fire({
+                                        title: 'Peringatan!',
+                                        text: 'Pastikan semua kriteria diagnosa ' + diagnosa + ' terpenuhi sebelum melanjutkan',
+                                        icon: 'warning',
+                                        confirmButtonText: 'Mengerti'
+                                    });
+                                }
+                            </script>
+
+                            <!-- Div untuk Diabetes Melitus -->
+                            <div id="infoDiabetesMelitus" class="mt-4 animate_animated animate_fadeIn" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; width: 80%; max-width: 600px;">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h5 class="mb-3"><i class="fas fa-notes-medical me-2"></i>Anamnesis</h5>
+                                        <ul class="mb-4">
+                                            <li>Adakah penurunan penglihatan dan disfungsi seksual</li>
+                                            <li>Adakah keluhan gastrointestinal seperti mual, muntah, konstipasi atau diare</li>
+                                            <li>Tanyakan riwayat penyakit keluarga</li>
+                                        </ul>
+
+                                        <h5 class="mb-3"><i class="fas fa-microscope me-2"></i>Kriteria Diagnosis</h5>
+                                        <ul class="mb-4">
+                                            <li>Gula darah puasa ≥ 126 mg/dL (diabetes melitus tipe 2)</li>
+                                            <li>Gula darah puasa 100–125 mg/dL (prediabetes)</li>
+                                        </ul>
+
+                                        <h5 class="mb-3"><i class="fas fa-microscope me-2"></i>Penunjang</h5>
+                                        <ul class="mb-4">
+                                            <li>Pemeriksaan laboratorium (GDP, GDS, HbA1c, OGTT)</li>
+                                        </ul>
+
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-danger me-3" onclick="showWarning('Diabetes Melitus')">Belum Sesuai</button>
+                                            <button type="button" class="btn btn-success" onclick="closeInfoDiabetesMelitus()">Sudah Sesuai</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function closeInfoDiabetesMelitus() {
+                                    document.getElementById('infoDiabetesMelitus').style.display = 'none';
+                                }
+                            </script>
+
+                            <!-- Div untuk HIV -->
+                            <div id="infoHIV" class="mt-4 animate_animated animate_fadeIn" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; width: 80%; max-width: 600px;">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h5 class="mb-3"><i class="fas fa-notes-medical me-2"></i>Anamnesis</h5>
+                                        <ul class="mb-4">
+                                            <li>1.Demam ( Suhu >37,5  ) terus menerus atau intermiten lebih dari satu bulan </li>
+                                            <li>Diare yang terus menerus atau intermiten lebih dari satu bulan</li>
+                                            <li>Keluhan disertai kehilangan berat badan (BB ) > 10 % dari berat badan dasar</li>
+                                        </ul>
+
+                                        <h5 class="mb-3"><i class="fas fa-microscope me-2"></i>Penunjang</h5>
+                                        <ul class="mb-4">
+                                            <li>Laboratorium</li>
+                                            <li>Radiologi</li>
+                                        </ul>
+
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-danger me-3" onclick="showWarning('HIV')">Belum Sesuai</button>
+                                            <button type="button" class="btn btn-success" onclick="closeInfoHIV()">Sudah Sesuai</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function closeInfoHIV() {
+                                    document.getElementById('infoHIV').style.display = 'none';
+                                }
+                            </script>
+
+                            <!-- Div untuk Hipertensi -->
+                            <div id="infoHipertensi" class="mt-4 animate_animated animate_fadeIn" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; width: 80%; max-width: 600px;">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h5 class="mb-3"><i class="fas fa-notes-medical me-2"></i>Anamnesis</h5>
+                                        <ul class="mb-4">
+                                            <li>Tanpa gejala tidak spesifik kadang disertai nyeri kepala dan tegang pada leher. Gejala pada hipertensi esensial tidak spesifik sedangkan pada hipertensi sekunder tergantung penyebab dasarnya</li>
+                                            <li>Factor resiko kardiofaskuler dan tanda-tanda kerusakan target organ</li>
+                                        </ul>
+
+                                        <h5 class="mb-3"><i class="fas fa-microscope me-2"></i>Penunjang</h5>
+                                        <ul class="mb-4">
+                                            <li>Rutin : analisa urin, tes fungsi ginjal, GDS, profil lipid, foto thorax, dan EKG</li>
+                                            <li>Sesuai penyakit penyerta : asam urat, USG Abdomen</li>
+                                        </ul>
+
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-danger me-3" onclick="showWarning('Hipertensi')">Belum Sesuai</button>
+                                            <button type="button" class="btn btn-success" onclick="closeInfoHipertensi()">Sudah Sesuai</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function closeInfoHipertensi() {
+                                    document.getElementById('infoHipertensi').style.display = 'none';
+                                }
+                            </script>
+
+                            <!-- Div untuk TB Paru -->
+                            <div id="infoTBParu" class="mt-4 animate_animated animate_fadeIn" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; width: 80%; max-width: 600px;">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h5 class="mb-3"><i class="fas fa-notes-medical me-2"></i>Anamnesis</h5>
+                                        <ul class="mb-4">
+                                            <li>Batuk berdahak ≥2 minggu dan dapat disertai sedikitnya salah satu dari gejala berikut:
+                                            <li>Local respiratorik: dapat bercampur darah atau batuk darah, sesak nafas, dan nyeri dada atau pleuritic chest pain (bila disertai peradangan pleura)</li>
+                                            <li>Sistematik: nafsu makan menurun, berat badan menurun, berkeringat malam tanpa kegiatan fisik, demam meriang lebih dari 1 bulan, badan lemas, dan malaise</li>
+                                        </ul>
+
+                                        <h5 class="mb-3"><i class="fas fa-microscope me-2"></i>Penunjang</h5>
+                                        <ul class="mb-4">
+                                            <li>Semua pasien dengan batuk produktif yang berlangsung selama ≥ 2 minggu yang tidak jelas penyebabnya , harus dievaluasi untuk TB.</li>
+                                        </ul>
+
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-danger me-3" onclick="showWarning('TB Paru')">Belum Sesuai</button>
+                                            <button type="button" class="btn btn-success" onclick="closeInfoTBParu()">Sudah Sesuai</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            <script>
+                                function closeInfoTBParu() {
+                                    document.getElementById('infoTBParu').style.display = 'none';
+                                }
+                            </script>
                         </div>
                     </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
                     <div class="row">
                         <!-- <div class="col-md-6">
@@ -171,12 +308,13 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Tambahkan CSS Select2 -->
                     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
                     <!-- Tambahkan JS jQuery dan Select2 -->
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+                    <!-- Tambahkan SweetAlert2 -->
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
                     <!-- Inisialisasi Select2 -->
                     <script>
@@ -194,11 +332,11 @@
         };
 
         const hargaDiagnosa = {
-            meningitis: 500000,
-            extrapyramidal: 300000,
-            epilepsy: 250000,
-            status_epilepticus: 400000,
-            tth: 150000,
+            serviks: 500000,
+            DiabetesMelitus: 300000,
+            HIV: 250000,
+            Hipertensi: 400000,
+            TBParu: 150000,
             // Tambahkan harga untuk diagnosa lainnya
         };
 
@@ -213,23 +351,47 @@
             $('#total-harga').text(total);
             $('#total_klaim_input').val(total);
 
-            // Kirim data ke server
-            $.ajax({
-                url: '/path/to/your/api/claim', // Ganti dengan endpoint yang sesuai
-                method: 'POST',
-                data: {
-                    kelas: kelas,
-                    diagnosa: diagnosa,
-                    harga_diagnosa: hargaDiagnosaPilihan,
-                    total_harga: total
-                },
-                success: function(response) {
-                    console.log('Data berhasil dikirim:', response);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Terjadi kesalahan:', error);
-                }
-            });
+            // Sembunyikan semua info diagnosa
+            $('#infoServiks').fadeOut();
+            $('#infoDiabetesMelitus').fadeOut();
+            $('#infoHIV').fadeOut();
+            $('#infoHipertensi').fadeOut();
+            $('#infoTBParu').fadeOut();
+
+            // Tampilkan info sesuai diagnosa yang dipilih
+            switch(diagnosa) {
+                case 'serviks':
+                    $('#infoServiks').fadeIn();
+                    break;
+                case 'DiabetesMelitus':
+                    $('#infoDiabetesMelitus').fadeIn();
+                    break;
+                case 'HIV':
+                    $('#infoHIV').fadeIn();
+                    break;
+                case 'Hipertensi':
+                    $('#infoHipertensi').fadeIn();
+                    break;
+                case 'TBParu':
+                    $('#infoTBParu').fadeIn();
+                    break;
+            }
+        }
+
+        function closeInfoDiabetesMelitus() {
+            $('#infoDiabetesMelitus').fadeOut();
+        }
+
+        function closeInfoHIV() {
+            $('#infoHIV').fadeOut();
+        }
+
+        function closeInfoHipertensi() {
+            $('#infoHipertensi').fadeOut();
+        }
+
+        function closeInfoTBParu() {
+            $('#infoTBParu').fadeOut();
         }
 
         $('#kelas_pasien').change(updateHarga);
