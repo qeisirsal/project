@@ -203,16 +203,15 @@
                                     <div class="card-body">
                                         <h5 class="mb-3"><i class="fas fa-notes-medical me-2"></i>Anamnesis</h5>
                                         <ul class="mb-4">
-                                            <li>Riwayat perilaku berisiko</li>
-                                            <li>Riwayat transfusi darah</li>
-                                            <li>Gejala konstitusional (demam, penurunan berat badan)</li>
+                                            <li>1.Demam ( Suhu >37,5  ) terus menerus atau intermiten lebih dari satu bulan </li>
+                                            <li>Diare yang terus menerus atau intermiten lebih dari satu bulan</li>
+                                            <li>Keluhan disertai kehilangan berat badan (BB ) > 10 % dari berat badan dasar</li>
                                         </ul>
 
                                         <h5 class="mb-3"><i class="fas fa-microscope me-2"></i>Penunjang</h5>
                                         <ul class="mb-4">
-                                            <li>Tes HIV Rapid</li>
-                                            <li>Pemeriksaan CD4</li>
-                                            <li>Viral Load</li>
+                                            <li>Laboratorium</li>
+                                            <li>Radiologi</li>
                                         </ul>
 
                                         <div class="text-center">
@@ -234,16 +233,14 @@
                                     <div class="card-body">
                                         <h5 class="mb-3"><i class="fas fa-notes-medical me-2"></i>Anamnesis</h5>
                                         <ul class="mb-4">
-                                            <li>Riwayat hipertensi keluarga</li>
-                                            <li>Keluhan sakit kepala, pusing</li>
-                                            <li>Riwayat konsumsi garam berlebih</li>
+                                            <li>Tanpa gejala tidak spesifik kadang disertai nyeri kepala dan tegang pada leher. Gejala pada hipertensi esensial tidak spesifik sedangkan pada hipertensi sekunder tergantung penyebab dasarnya</li>
+                                            <li>Factor resiko kardiofaskuler dan tanda-tanda kerusakan target organ</li>
                                         </ul>
 
                                         <h5 class="mb-3"><i class="fas fa-microscope me-2"></i>Penunjang</h5>
                                         <ul class="mb-4">
-                                            <li>Pengukuran tekanan darah serial</li>
-                                            <li>EKG</li>
-                                            <li>Laboratorium darah lengkap</li>
+                                            <li>Rutin : analisa urin, tes fungsi ginjal, GDS, profil lipid, foto thorax, dan EKG</li>
+                                            <li>Sesuai penyakit penyerta : asam urat, USG Abdomen</li>
                                         </ul>
 
                                         <div class="text-center">
@@ -265,16 +262,14 @@
                                     <div class="card-body">
                                         <h5 class="mb-3"><i class="fas fa-notes-medical me-2"></i>Anamnesis</h5>
                                         <ul class="mb-4">
-                                            <li>Batuk berdahak > 2 minggu</li>
-                                            <li>Demam subfebris</li>
-                                            <li>Penurunan berat badan</li>
+                                            <li>Batuk berdahak ≥2 minggu dan dapat disertai sedikitnya salah satu dari gejala berikut:
+                                            <li>Local respiratorik: dapat bercampur darah atau batuk darah, sesak nafas, dan nyeri dada atau pleuritic chest pain (bila disertai peradangan pleura)</li>
+                                            <li>Sistematik: nafsu makan menurun, berat badan menurun, berkeringat malam tanpa kegiatan fisik, demam meriang lebih dari 1 bulan, badan lemas, dan malaise</li>
                                         </ul>
 
                                         <h5 class="mb-3"><i class="fas fa-microscope me-2"></i>Penunjang</h5>
                                         <ul class="mb-4">
-                                            <li>Pemeriksaan sputum BTA</li>
-                                            <li>Foto thorax</li>
-                                            <li>GeneXpert MTB/RIF</li>
+                                            <li>Semua pasien dengan batuk produktif yang berlangsung selama ≥ 2 minggu yang tidak jelas penyebabnya , harus dievaluasi untuk TB.</li>
                                         </ul>
 
                                         <div class="text-center">
